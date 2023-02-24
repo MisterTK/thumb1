@@ -23,3 +23,28 @@ export const PLASMIC = initPlasmicLoader({
 // https://docs.plasmic.app/learn/app-hosting/#set-a-plasmic-project-to-use-your-app-host
 
 // PLASMIC.registerComponent(...);
+//import { registerComponent } from "@plasmicapp/loader-next";
+//import * as React from 'react';
+//import PLASMIC from '@plasmicapp/loader';
+import ThumbsRating from "./components/ThumbsRating";
+
+const components = [
+  {
+    component: ThumbsRating,
+    name: 'ThumbsRating',
+    defaultProps: {
+      thumbsUpPressed: 'thumbsUpPressedUrl',
+      thumbsUpUnpressed: 'thumbsUpUnpressedUrl',
+      thumbsDownPressed: 'thumbsDownPressedUrl',
+      thumbsDownUnpressed: 'thumbsDownUnpressedUrl',
+      twoThumbsUpPressed: 'twoThumbsUpPressedUrl',
+      twoThumbsUpUnpressed: 'twoThumbsUpUnpressedUrl',
+      onPress: () => {}
+    }
+  }
+];
+
+components.forEach((comp) => {
+  PLASMIC.registerComponent(comp.component, comp.name);
+  comp.component.defaultProps = comp.defaultProps;
+});

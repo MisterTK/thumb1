@@ -24,24 +24,8 @@ export const PLASMIC = initPlasmicLoader({
 
 // PLASMIC.registerComponent(...);
 import ThumbsRating from "./components/ThumbsRating";
-
-const components = [
-  {
-    component: ThumbsRating,
-    name: 'ThumbsRating',
-    defaultProps: {
-      thumbsUpPressed: 'thumbsUpPressedUrl',
-      thumbsUpUnpressed: 'thumbsUpUnpressedUrl',
-      thumbsDownPressed: 'thumbsDownPressedUrl',
-      thumbsDownUnpressed: 'thumbsDownUnpressedUrl',
-      twoThumbsUpPressed: 'twoThumbsUpPressedUrl',
-      twoThumbsUpUnpressed: 'twoThumbsUpUnpressedUrl',
-      onPress: () => {}
-    }
-  }
-];
-
-components.forEach((comp) => {
-  PLASMIC.registerComponent(comp.component, comp.name);
-  comp.component.defaultProps = comp.defaultProps;
+PLASMIC.registerComponent(ThumbsRating, {
+  props: {
+    onPress: () => console.log('on press called!'),
+  },
 });
